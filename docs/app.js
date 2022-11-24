@@ -8,7 +8,7 @@ await $.getJSON('https://www.sefaria.org.il/api/shape/Talmud/Bavli', async funct
     maxBar = maxBar * data.length;
     c(current + " / " + maxBar);
     var link = 'https://www.sefaria.org/api/texts/';
-    for(let id = 0; id < 1; id++){
+    for(let id = 0; id < document.getElementById("numOfGmara").value; id++){
         var ch = data[id];
         var title = ch.title;
         var chapters = ch.chapters;
