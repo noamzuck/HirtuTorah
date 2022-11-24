@@ -82,16 +82,27 @@ document.getElementById("text").innerHTML = all;
 
 function sortMax(w) {
 	var max = 0;
+    var maxSec = 0;
+    var maxThr = 0;
 	for (var i in w) {
-		if (max == 0) max = i;
-		else if (w[max] < w[i]) max = i;
+		if (max == 0) {maxThr = maxSec; maxSec = max; max = i;}
+		else if (w[max] < w[i]) {maxThr = maxSec; maxSec = max; max = i;}
 		else if (w[max] == w[i]) {
 			var r = Math.floor(Math.random() * (1 - 0 + 1));
-			if (r == 0) max = i;
+			if (r == 0) {maxThr = maxSec; maxSec = max; max = i;}
 		}
 	}
 
-	return max;
+    /*if(maxThr != 0 && (w[maxThr] * 5) > w[max]){
+        var r = Math.floor(Math.random() * (3));
+        if(r == 2) max = maxThr;
+        else if(r == 1) max = maxSec;
+    } else */if(maxSec != 0){
+        var r = Math.floor(Math.random() * (1));
+        if(r == 1) max = maxSec;
+    }
+
+    return max;
 }
 
 function reg(){
